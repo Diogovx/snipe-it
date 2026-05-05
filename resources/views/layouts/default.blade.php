@@ -1813,6 +1813,14 @@
                                             </a>
                                         </li>
                                     @endcan
+
+                                    @can('view', \App\Models\TermTemplate::class)
+                                        <li  {{!! (request()->is('term-templates*') ? ' class="active"' : '') !!}}>
+                                            <a href="{{ route('term-templates.index') }}">
+                                                {{ trans('general.termTemplates') }}
+                                            </a>
+                                        </li>
+                                    @endcan
                                 </ul>
                             </li>
                         @endcan

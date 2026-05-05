@@ -417,6 +417,7 @@
                         <x-button.label :item="$asset" :route="route('hardware.bulkedit.show')"/>
                         <x-button.delete :item="$asset"/>
                         <x-button.restore :item="$asset" :route="route('restore/hardware', ['asset' => $asset->id])"/>
+                        <x-button.term :item="$asset" :route="route('terms.form', $asset->id)"/>
                     </x-slot:buttons>
                 </x-info-panel>
             </x-box>
@@ -425,6 +426,21 @@
 
     </x-container>
 
+    <div class="modal fade" id="termModal" tabindex="-1">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                    <h4 class="modal-title">{{ trans('general.generate_term') }}</h4>
+                </div>
+                <div class="modal-body" id="termModalBody">
+                    <p>{{ trans('general.loading') }}</p>
+                </div>
+            </div>
+        </div>
+    </div>
 
     @section('moar_scripts')
         @can('files', $asset)
@@ -434,6 +450,11 @@
         @include ('modals.add-note', ['type' => 'asset', 'id' => $asset->id])
     @endcan
         @include ('partials.bootstrap-table')
+        <script>
+            $('#termModal').on('show.bs.modal', function () {
+                $('#termModalBody').load('{{ route('terms.form', $asset->id) }}');
+            });
+        </script>
     @endsection
 
 @stop
