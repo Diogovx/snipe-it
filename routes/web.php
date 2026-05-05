@@ -29,6 +29,8 @@ use App\Http\Controllers\StorageProxyController;
 use App\Http\Controllers\SuppliersController;
 use App\Http\Controllers\UploadedFilesController;
 use App\Http\Controllers\ViewAssetsController;
+use App\Http\Controllers\TermTemplatesController;
+use App\Http\Controllers\TermGeneratorController;
 use App\Livewire\Importer;
 use App\Mail\CheckoutComponentMail;
 use App\Models\ReportTemplate;
@@ -100,6 +102,29 @@ Route::group(['middleware' => 'auth'], function () {
     * Departments
     */
     Route::resource('departments', DepartmentsController::class);
+
+    /*
+        |--------------------------------------------------------------------------
+        | GERAÇÃO DE TERMOS
+        |--------------------------------------------------------------------------
+        */
+
+        // Admin: CRUD de templates
+        Route::resource('term-templates', TermTemplatesController::class)
+            ->except(['show']);
+
+        // Geração de termos
+        Route::get('/hardware/{assetId}/terms',          [TermGeneratorController::class, 'showForm'])
+            ->name('terms.form');
+        Route::post('/hardware/{assetId}/terms/generate', [TermGeneratorController::class, 'generate'])
+            ->name('terms.generate');
+        Route::get('/hardware/{assetId}/terms/history',   [TermGeneratorController::class, 'history'])
+            ->name('terms.history');
+            // routes/web.php
+        Route::get('term-templates/{termTemplate}/logs', [TermTemplatesController::class, 'logs'])
+            ->name('term-templates.logs');
+
+        /* ------------------------------------------------------------------------ */
 });
 
 /*

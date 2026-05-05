@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Api;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Api\TermGeneratorApiController;
 
 /*
 |--------------------------------------------------------------------------
@@ -1309,6 +1310,12 @@ Route::group(['prefix' => 'v1', 'middleware' => ['api', 'api-throttle:api']], fu
         )->name('api.activity.index');
     }); // end reports api routes
 
+    // Term generator api routes
+    Route::group(['prefix' => 'terms'], function () {
+        Route::post('generate', [TermGeneratorApiController::class, 'generate']);
+        Route::get('templates',  [TermGeneratorApiController::class, 'templates']);
+    });
+
     /**
      * Version API routes
      */
@@ -1340,6 +1347,7 @@ Route::group(['prefix' => 'v1', 'middleware' => ['api', 'api-throttle:api']], fu
         'getLabels',
     ])->name('api.assets.labels');
     // end generate label routes
+
 
     /**
      * Uploaded files API routes
