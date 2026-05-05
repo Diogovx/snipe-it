@@ -770,7 +770,6 @@ return [
     'allowed_categories' => 'Allowed Categories',
     'all_categories' => 'All categories',
     'leave_uncheck_category' => 'Leave all unchecked to accept any category.',
-    'status' => 'Status',
     'active_template' => 'Active Template',
     'last_generations' => 'Last generations',
     'total' => 'total',
@@ -790,7 +789,17 @@ return [
     'no_templates' => 'No templates registered yet.',
     'var' => 'Use <code>${variable}</code>',
     'generate_term' => 'Generate term',
-    'no_templates' => 'No templates available for the category',
     'template_type' => 'Tipo de Termo',
-    'gen_download' => 'Generate and download'
+    'gen_download' => 'Generate and download',
+    'Keyboards' => 'Keyboards',
+    'Laptops' => 'Laptops',
+    'Headsets' => 'Headsets',
+    'Desktops' => 'Desktops',
+    'Monitors' => 'Monitors',
+    'Charger' => 'Charger',
+    'SIM Card' => 'SIM Card',
+    'Mice' => 'Mouses',
+    'Mouses' => 'Mouses',
+    'generation_history' => 'Generation History',
+    'no_generation_template' => 'No generation recorded for this template.'
 ];
