@@ -798,5 +798,8 @@ Resultados da Sincronização',
     'Mice' => 'Mouses',
     'Mouses' => 'Mouse',
     'generation_history' => 'Histórico de geração',
-    'no_generation_template' => 'Nenhuma geração registrada para este template.'
+    'no_generation_template' => 'Nenhuma geração registrada para este template.',
+    'select_document_purpose' => 'Selecione o propósito do termo',
+    'terms_responsibility' => 'Termo de responsabilidade',
+    'return_term' => 'Termo de Devolução'
 ];

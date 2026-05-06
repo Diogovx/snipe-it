@@ -67,13 +67,13 @@
 
                     </div>
                     <div class="form-group {{ $errors->has('term_type') ? 'has-error' : '' }}">
-                        <label>Tipo de Termo <span class="text-danger">*</span></label>
+                        <label>{{ trans('general.document_type') }} <span class="text-danger">*</span></label>
                         <select name="term_type" class="form-control" required>
-                            <option value="">Selecione o propósito deste termo...</option>
-                            <option value="checkout" {{ old('term_type', $termTemplate->term_type) == 'checkout' ? 'selected' : '' }}>Termo de Responsabilidade (Checkout)</option>
-                            <option value="checkin" {{ old('term_type', $termTemplate->term_type) == 'checkin' ? 'selected' : '' }}>Termo de Devolução (Checkin)</option>
+                            <option value="">{{ trans('general.select_document_purpose') }}</option>
+                            <option value="checkout" {{ old('term_type', $termTemplate->term_type) == 'checkout' ? 'selected' : '' }}>{{ trans('general.terms_responsibility') }} (Checkout)</option>
+                            <option value="checkin" {{ old('term_type', $termTemplate->term_type) == 'checkin' ? 'selected' : '' }}>{{ trans('general.return_term') }} (Checkin)</option>
                         </select>
-                        <p class="help-block">Define em qual momento do sistema este termo será gerado.</p>
+                        <!--<p class="help-block">Define em qual momento do sistema este termo será gerado.</p>-->
                     </div>
                     
                     <div class="form-group">

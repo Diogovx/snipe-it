@@ -781,7 +781,7 @@ return [
     'see_var_below' => 'See the available variables below.',
     'var_available' => 'Variables available for the templates',
     'terms_of_responsibility' => 'Terms of Responsibility',
-    'rigistered_templates' =>  'Registered templates',
+    'registered_templates' =>  'Registered templates',
     'generated' => 'Generated',
     'actions' => 'Actions',
     'inactive' => 'Inactive',
@@ -801,5 +801,9 @@ return [
     'Mice' => 'Mouses',
     'Mouses' => 'Mouses',
     'generation_history' => 'Generation History',
-    'no_generation_template' => 'No generation recorded for this template.'
+    'no_generation_template' => 'No generation recorded for this template.',
+    'document_type' => 'Document type',
+    'select_document_purpose' => 'Select the purpose of this term',
+    'terms_responsibility' => 'Terms of Responsibility',
+    'return_term' => 'Return Document'
 ];
