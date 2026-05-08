@@ -123,6 +123,9 @@ Route::group(['middleware' => 'auth'], function () {
             // routes/web.php
         Route::get('term-templates/{termTemplate}/logs', [TermTemplatesController::class, 'logs'])
             ->name('term-templates.logs');
+        // routes/web.php
+        Route::get('hardware/{asset}/terms/status', [TermGeneratorController::class, 'status'])
+            ->name('terms.status');
 
         /* ------------------------------------------------------------------------ */
 });
