@@ -16,6 +16,7 @@ class TermTemplate extends Model
     protected $fillable = [
         'name',
         'term_type',
+        'depends_on',
         'file_name',
         'allowed_categories',
         'field_map',

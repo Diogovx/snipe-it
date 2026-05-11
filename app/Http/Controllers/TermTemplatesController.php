@@ -34,6 +34,7 @@ class TermTemplatesController extends Controller
             'allowed_categories' => 'nullable|array',
             'allowed_categories.*' => 'string',
             'term_type'            => 'required|string|in:checkout,checkin',
+            'depends_on' => 'nullable|string|max:100',
             // campos: JSON digitado pelo admin ou gerado pelo form
             'field_map' => 'nullable|string',
         ]);
@@ -53,7 +54,8 @@ class TermTemplatesController extends Controller
         TermTemplate::create([
             'name'               => $request->input('name'),
             'file_name'          => $fileName,
-            'term_type'          => $request->input('term_type'), 
+            'term_type'          => $request->input('term_type'),
+            'depends_on' => $request->input('depends_on') ?: null, 
             'allowed_categories' => $categories,
             'field_map'          => $fieldMap,
         ]);
@@ -79,6 +81,7 @@ class TermTemplatesController extends Controller
             'allowed_categories' => 'nullable|array',
             'allowed_categories.*' => 'string',
             'term_type'            => 'required|string|in:checkout,checkin',
+            'depends_on' => 'nullable|string|max:100',
             'field_map'          => 'nullable|string',
             'active'             => 'boolean',
         ]);
@@ -104,6 +107,7 @@ class TermTemplatesController extends Controller
             'file_name'          => $termTemplate->file_name,
             'term_type'          => $request->input('term_type'), 
             'allowed_categories' => $this->parseCategories($request->input('allowed_categories')),
+            'depends_on' => $request->input('depends_on') ?: null,
             'field_map'          => $this->parseFieldMap($request->input('field_map')),
             'active'             => $request->boolean('active', true),
         ]);
