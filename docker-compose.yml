@@ -6,7 +6,7 @@ volumes:
 
 services:
   app:
-    image: snipe/snipe-it:${APP_VERSION:-latest}
+    build: .
     restart: unless-stopped
     volumes:
       - storage:/var/lib/snipeit
@@ -14,8 +14,24 @@ services:
       - "${APP_PORT:-8082}:80"
     depends_on:
       - db
-    env_file:
-      - .env.example
+    environment:
+      APP_ENV: ${APP_ENV}
+      APP_DEBUG: ${APP_DEBUG}
+      APP_KEY: ${APP_KEY}
+      APP_URL: ${APP_URL}
+      DB_CONNECTION: ${DB_CONNECTION}
+      DB_HOST: ${DB_HOST}
+      DB_SOCKET: ${DB_SOCKET}
+      DB_PORT: ${DB_PORT}
+      DB_DATABASE: ${DB_DATABASE}
+      DB_USERNAME: ${DB_USERNAME}
+      DB_PASSWORD: ${DB_PASSWORD}
+      DB_PREFIX: ${DB_PREFIX}
+      DB_DUMP_PATH: ${DB_DUMP_PATH}
+      DB_DUMP_SKIP_SSL: ${DB_DUMP_SKIP_SSL}
+      DB_CHARSET: ${DB_CHARSET}
+      DB_COLLATION: ${DB_COLLATION}
+      DB_SANITIZE_BY_DEFAULT: ${DB_SANITIZE_BY_DEFAULT}
 
   db:
     image: mariadb:11.4.7
