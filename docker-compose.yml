@@ -39,10 +39,10 @@ services:
     volumes:
       - db_data:/var/lib/mysql
     environment:
-      MYSQL_DATABASE: ${DB_DATABASE}
-      MYSQL_USER: ${DB_USERNAME}
-      MYSQL_PASSWORD: ${DB_PASSWORD}
-      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
+      MARIADB_DATABASE: ${DB_DATABASE}
+      MARIADB_USER: ${DB_USERNAME}
+      MARIADB_PASSWORD: ${DB_PASSWORD}
+      MARIADB_ROOT_PASSWORD: ${MARIADB_ROOT_PASSWORD}
     healthcheck:
       # https://mariadb.com/kb/en/using-healthcheck-sh/#compose-file-example
       test: ["CMD", "healthcheck.sh", "--connect", "--innodb_initialized"]
