@@ -50,4 +50,9 @@ return [
         'maps_api_key' => env('GOOGLE_MAPS_API'),
     ],
 
+    'snipeit' => [
+        'url'     => env('SNIPEIT_URL'),
+        'api_key' => env('SNIPEIT_API_KEY'),
+    ],
+
 ];

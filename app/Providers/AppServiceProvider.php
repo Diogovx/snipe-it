@@ -30,6 +30,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Support\Facades\URL;
 use Illuminate\Support\ServiceProvider;
 use Rollbar\Laravel\RollbarServiceProvider;
+use App\Services\TermEligibilityService;
 
 /**
  * This service provider handles setting the observers on models
@@ -107,6 +108,6 @@ class AppServiceProvider extends ServiceProvider
         }
 
         $this->app->singleton('ArieTimmerman\Laravel\SCIMServer\SCIMConfig', SnipeSCIMConfig::class); // this overrides the default SCIM configuration with our own
-
+        $this->app->singleton(TermEligibilityService::class);
     }
 }
