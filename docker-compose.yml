@@ -13,9 +13,7 @@ services:
     ports:
       - "${APP_PORT:-8000}:80"
     depends_on:
-      db:
-        condition: service_healthy
-        restart: true
+      - db
     env_file:
       - .env.example
 
