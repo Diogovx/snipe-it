@@ -73,7 +73,27 @@
                             <option value="checkout" {{ old('term_type', $termTemplate->term_type) == 'checkout' ? 'selected' : '' }}>{{ trans('general.terms_responsibility') }} (Checkout)</option>
                             <option value="checkin" {{ old('term_type', $termTemplate->term_type) == 'checkin' ? 'selected' : '' }}>{{ trans('general.return_term') }} (Checkin)</option>
                         </select>
-                        <!--<p class="help-block">Define em qual momento do sistema este termo será gerado.</p>-->
+                        <p class="help-block">{{ trans('general.defines_when_generated') }}</p>
+                    </div>
+
+                    <div class="form-group {{ $errors->has('depends_on') ? 'has-error' : '' }}">
+                        <label>{{ trans('general.it_depends_on_optional') }}</label>
+                        <select name="depends_on" class="form-control">
+                            <option value="">{{ trans('no_dependency') }}</option>
+                                @foreach(\App\Models\TermTemplate::where('active', true)
+                                    ->whereNull('depends_on')  {{-- evita dependências circulares --}}
+                                    ->where('id', '!=', isset($termTemplate) ? $termTemplate->id : 0)
+                                    ->orderBy('term_type')->orderBy('name')
+                                    ->get() as $dep)
+                            <option value="{{ $dep->term_type }}"
+                                {{ old('depends_on', isset($termTemplate) ? $termTemplate->depends_on : '') == $dep->term_type ? 'selected' : '' }}>
+                                [{{ $dep->term_type }}] {{ $dep->name }}
+                            </option>
+                                @endforeach
+                        </select>
+                        <p class="help-block">
+                            {{ trans('general.if_filled_term_generated_after_the_selected_type_has_been_generated') }}
+                        </p>
                     </div>
                     
                     <div class="form-group">

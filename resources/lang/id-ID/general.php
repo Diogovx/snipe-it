@@ -813,5 +813,9 @@ return [
     'term_status_available' => 'Tersedia',
     'term_blocked_by'       => 'Memerlukan',
     'term_requires'         => 'Memerlukan',
+    'defines_when_generated' => 'Menentukan kapan ketentuan ini akan dibuat di dalam sistem.',
+    'it_depends_on_optional' => 'Bergantung pada (opsional)',
+    'no_dependency' => 'Tidak ada ketergantungan',
+    'if_filled_term_generated_after_the_selected_type_has_been_generated' => 'Jika diisi, ketentuan ini hanya dapat dibuat setelah ketentuan dari jenis yang dipilih telah dibuat untuk aset yang sama.',
 
 ];

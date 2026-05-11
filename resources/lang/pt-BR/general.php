@@ -814,4 +814,8 @@ Resultados da Sincronização',
     'term_status_available' => 'Disponível',
     'term_blocked_by'       => 'Requer',
     'term_requires'         => 'Requer',
+    'defines_when_generated' => 'Define em qual momento do sistema este termo será gerado.',
+    'it_depends_on_optional' => 'Depende de (opcional)',
+    'no_dependency' => 'Nenhuma dependência',
+    'if_filled_term_generated_after_the_selected_type_has_been_generated' => 'Se preenchido, este termo só pode ser gerado após um termo do tipo selecionado ter sido gerado para o mesmo ativo.',
 ];

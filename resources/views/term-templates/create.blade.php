@@ -60,27 +60,46 @@
                        name="allowed_categories[]"
                        value="{{ $category->name }}"
                        class="category-checkbox"
-                       {{-- Para o edit, marca as já salvas --}}
                        {{ isset($termTemplate) && $termTemplate->allowed_categories && in_array($category->name, $termTemplate->allowed_categories) ? 'checked' : '' }}>
                 {{ $category->name }}
             </label>
         </div>
         @endforeach
     </div>
-    {{-- Adicionar no create.blade.php, após o bloco de allowed_categories --}}
 <div class="form-group {{ $errors->has('term_type') ? 'has-error' : '' }}">
-    <label>Tipo de Termo <span class="text-danger">*</span></label>
+    <label>{{ trans('general.document_type') }} <span class="text-danger">*</span></label>
     <select name="term_type" class="form-control" required>
-        <option value="">Selecione o propósito deste termo...</option>
+        <option value="">{{ trans('general.select_document_purpose') }}</option>
         <option value="checkout" {{ old('term_type') == 'checkout' ? 'selected' : '' }}>
-            Termo de Responsabilidade (Checkout)
+            {{ trans('general.terms_responsibility') }} (Checkout)
         </option>
         <option value="checkin" {{ old('term_type') == 'checkin' ? 'selected' : '' }}>
-            Termo de Devolução (Checkin)
+            {{ trans('general.return_term') }} (Checkin)
         </option>
     </select>
-    <p class="help-block">Define em qual momento do sistema este termo será gerado.</p>
+    <p class="help-block">{{ trans('general.defines_when_generated') }}</p>
 </div>
+
+    <div class="form-group {{ $errors->has('depends_on') ? 'has-error' : '' }}">
+                        <label>{{trans('general.it_depends_on_optional')}}</label>
+                        <select name="depends_on" class="form-control">
+                            <option value="">{{ trans('general.no_dependency') }}</option>
+                                @foreach(\App\Models\TermTemplate::where('active', true)
+                                    ->whereNull('depends_on')  {{-- evita dependências circulares --}}
+                                    ->where('id', '!=', isset($termTemplate) ? $termTemplate->id : 0)
+                                    ->orderBy('term_type')->orderBy('name')
+                                    ->get() as $dep)
+                            <option value="{{ $dep->term_type }}"
+                                {{ old('depends_on', isset($termTemplate) ? $termTemplate->depends_on : '') == $dep->term_type ? 'selected' : '' }}>
+                                [{{ $dep->term_type }}] {{ $dep->name }}
+                            </option>
+                                @endforeach
+                        </select>
+                        <p class="help-block">
+                            {{ trans('general.if_filled_term_generated_after_the_selected_type_has_been_generated') }}
+                        </p>
+                    </div>
+
     <p class="help-block">{{ trans('general.leave_uncheck_category') }}.</p>
                     </div>
 
@@ -129,11 +148,19 @@
                                         <li><code>${acc_name}</code></li>
                                         <li><code>${acc_serial}</code></li>
                                         <li><code>${acc_category}</code></li>
+                                        <li><code>${acc_qty}</code></li>
                                         <li><code>${/accessories}</code></li>
                                         <li><code>${components}</code></li>
                                         <li><code>${comp_name}</code></li>
+                                        <li><code>${comp_serial}</code></li>
+                                        <li><code>${comp_category}</code></li>
+                                        <li><code>${comp_qty}</code></li>
                                         <li><code>${/components}</code></li>
                                         <li><code>${user_assets}</code></li>
+                                        <li><code>${ua_tag}</code></li>
+                                        <li><code>${ua_serial}</code></li>
+                                        <li><code>${ua_model}</code></li>
+                                        <li><code>${ua_category}</code></li>
                                         <li><code>${/user_assets}</code></li>
                                     </ul>
                                 </div>

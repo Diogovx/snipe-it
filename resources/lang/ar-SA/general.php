@@ -814,5 +814,8 @@ return [
     'term_status_available' => 'متاح',
     'term_blocked_by'       => 'يتطلب',
     'term_requires'         => 'يتطلب',
-
+    'defines_when_generated' => 'يحدد متى سيتم إنشاء هذا الشرط داخل النظام.',
+    'it_depends_on_optional' => 'يعتمد على (اختياري)',
+    'no_dependency' => 'لا توجد تبعية',
+    'if_filled_term_generated_after_the_selected_type_has_been_generated' => 'إذا تم ملؤه، لا يمكن إنشاء هذا الشرط إلا بعد إنشاء شرط من النوع المحدد لنفس الأصل.',
 ];

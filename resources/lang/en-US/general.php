@@ -819,4 +819,8 @@ return [
     'term_status_available' => 'Available',
     'term_blocked_by'       => 'Requires',
     'term_requires'         => 'Requires',
+    'defines_when_generated' => 'Defines when this term will be generated within the system.',
+    'it_depends_on_optional' => 'Depends on (optional)',
+    'no_dependency' => 'No dependency',
+    'if_filled_term_generated_after_the_selected_type_has_been_generated' => 'If filled, this term can only be generated after a term of the selected type has been generated for the same asset.',
 ];
